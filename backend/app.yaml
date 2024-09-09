@@ -1,0 +1,4 @@
+runtime: nodejs20
+env_variables:
+  MONGO_USERNAME: node-server
+  MONGO_PASSWORD: kOMRUGsW1VxZP6wB
