@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(`http://localhost:8000/api/article/article1`);
+      const response = await axios.get(`/api/article/article1`);
       setArticleInfo(response.data);
       console.log("SHibani")
     }
