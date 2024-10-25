@@ -1,27 +1,29 @@
-import logo from './logo.svg';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import SuppliersPage from './pages/SuppliersPage';
+import NotFoundPage from './pages/NotFoundPage';
+import Navbar from './pages/NavBar';
+import SalesPage from './pages/SalesPage';
+import PoolingAuction from "./pages/PoolingAuction";
+
 import './App.css';
 
 function App() {
-  const [articleInfo, setArticleInfo] = useState({});
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get(`/api/article/article1`);
-      setArticleInfo(response.data);
-      console.log("SHibani")
-    }
-    fetchData();
-
-  }, [])
   return (
-    <div className="App">
-      Reliance Cardamom Company
-      {
-        articleInfo && articleInfo.name ? <>{articleInfo.name}</> : <>No Articlefound</>
-      }
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+        <div id="page-body">
+          <Routes>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/sales" element={<SalesPage />}></Route>
+            <Route path="/auction" element={<PoolingAuction />}></Route>
+            <Route path="/suppliers" element={<SuppliersPage />}></Route>
+            <Route path="*" element={<NotFoundPage />}></Route>
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
